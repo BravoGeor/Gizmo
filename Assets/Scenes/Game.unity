@@ -6290,7 +6290,7 @@ MonoBehaviour:
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   movementSpeed: 1.5
 --- !u!143 &1400482136
 CharacterController:
