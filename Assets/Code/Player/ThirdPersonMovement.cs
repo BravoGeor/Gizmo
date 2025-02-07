@@ -66,74 +66,13 @@ public class ThirdPersonMovement : MonoBehaviour
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
-            controller.Move(direction * speed * Time.deltaTime);
+            float moveSpeed = speed;
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                moveSpeed *= 2;
+            }
+            controller.Move(direction * moveSpeed * Time.deltaTime);
         }
-
-
-        //Sprint forward
-        if (Input.GetKeyDown("w"))
-        {
-          //  isMoving = true;
-        }
-
-        if (Input.GetKeyUp("w"))
-        {
-         //   isMoving = false;
-        }
-
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            transform.position += transform.forward * Time.deltaTime * movementSpeed;
-        }
-
-        //Sprint right
-        if (Input.GetKeyDown("d"))
-        {
-         //   isMoving = true;
-        }
-
-        if (Input.GetKeyUp("d"))
-        {
-         //   isMoving = false;
-        }
-
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            transform.position += transform.forward * Time.deltaTime * movementSpeed;
-        }
-
-        //Sprint left
-        if (Input.GetKeyDown("a"))
-        {
-        //   isMoving = true;
-        }
-
-        if (Input.GetKeyUp("a"))
-        {
-       //     isMoving = false;
-        }
-
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            transform.position += transform.forward * Time.deltaTime * movementSpeed;
-        }
-
-        //Sprint down
-        if (Input.GetKeyDown("s"))
-        {
-       //     isMoving = true;
-        }
-
-        if (Input.GetKeyUp("s"))
-        {
-        //    isMoving = false;
-        }
-
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            transform.position += transform.forward * Time.deltaTime * movementSpeed;
-        }
-
     }
     // Referanced code https://youtu.be/4HpC--2iowE?si=B015v73MhrT-OZyz
 }
