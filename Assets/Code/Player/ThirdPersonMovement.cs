@@ -38,7 +38,7 @@ public class ThirdPersonMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //Death 
         //gravity 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         if (isGrounded && velocity.y < 0)
@@ -75,4 +75,13 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
     // Referanced code https://youtu.be/4HpC--2iowE?si=B015v73MhrT-OZyz
+    void OnControllerColliderHit(ControllerColliderHit collision)
+    {
+        if (collision.gameObject.tag == "Trap")
+        {
+            controller.enabled = false;
+            controller.transform.position = CheckPoint.GetActiveCheckPointPosition();
+            controller.enabled = true;
+        }
+    }
 }
