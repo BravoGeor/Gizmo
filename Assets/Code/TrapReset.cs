@@ -45,4 +45,9 @@ public class TrapReset : MonoBehaviour
             rb.rotation = rotation;
         }
     }
+
+    // having this empty function fixes a bug in Unity collision!?
+    void OnCollisionEnter(Collision collision)
+    {
+    }
 }
