@@ -30,6 +30,11 @@ public class CheckPoint : MonoBehaviour
 
         // We activate the current checkpoint
         activated = true;
+        TrapReset[] traps = GameObject.FindObjectsByType<TrapReset>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (TrapReset trap in traps)
+        {
+            trap.SaveState();
+        }
     }
 
     void OnTriggerEnter(Collider other)

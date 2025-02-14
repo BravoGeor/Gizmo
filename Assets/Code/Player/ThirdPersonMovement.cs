@@ -74,14 +74,37 @@ public class ThirdPersonMovement : MonoBehaviour
             controller.Move(direction * moveSpeed * Time.deltaTime);
         }
     }
+
+    void Respawn()
+    {
+        controller.enabled = false;
+        controller.transform.position = CheckPoint.GetActiveCheckPointPosition();
+        controller.enabled = true;
+
+        TrapReset[] traps = GameObject.FindObjectsByType<TrapReset>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (TrapReset trap in traps)
+        {
+            trap.ResetState();
+        }
+    }
+
+    void CheckTrap(GameObject trap)
+    {
+        if (trap.tag == "Trap")
+        {
+            Respawn();
+        }
+    }
+
     // Referanced code https://youtu.be/4HpC--2iowE?si=B015v73MhrT-OZyz
     void OnControllerColliderHit(ControllerColliderHit collision)
     {
-        if (collision.gameObject.tag == "Trap")
-        {
-            controller.enabled = false;
-            controller.transform.position = CheckPoint.GetActiveCheckPointPosition();
-            controller.enabled = true;
-        }
+        CheckTrap(collision.gameObject);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.collider.name);
+        CheckTrap(collision.gameObject);
     }
 }
