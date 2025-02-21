@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class TrapReset : MonoBehaviour
 {
@@ -46,8 +47,17 @@ public class TrapReset : MonoBehaviour
         }
     }
 
-    // having this empty function fixes a bug in Unity collision!?
+    public void CheckTrap(ThirdPersonMovement player)
+    {
+        if (player)
+        {
+            player.Respawn();
+        }
+    }
+
+    // check if a trap hits the player
     void OnCollisionEnter(Collision collision)
     {
+        CheckTrap(collision.gameObject.GetComponent<ThirdPersonMovement>());
     }
 }

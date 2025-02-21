@@ -75,7 +75,7 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
-    void Respawn()
+    public void Respawn()
     {
         controller.enabled = false;
         controller.transform.position = CheckPoint.GetActiveCheckPointPosition();
@@ -88,23 +88,14 @@ public class ThirdPersonMovement : MonoBehaviour
         }
     }
 
-    void CheckTrap(GameObject trap)
-    {
-        if (trap.tag == "Trap")
-        {
-            Respawn();
-        }
-    }
-
     // Referanced code https://youtu.be/4HpC--2iowE?si=B015v73MhrT-OZyz
+    // check if the player hits a trap
     void OnControllerColliderHit(ControllerColliderHit collision)
     {
-        CheckTrap(collision.gameObject);
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log(collision.collider.name);
-        CheckTrap(collision.gameObject);
+        TrapReset trap = collision.collider.GetComponent<TrapReset>();
+        if (trap)
+        {
+            trap.CheckTrap(this);
+        }
     }
 }
