@@ -3,6 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
+
+    void Start()
+    {
+        Cursor.visible = false;
+    }
+
     // This method will be called at the end of the animation
     public void OnAnimationEnd()
     {

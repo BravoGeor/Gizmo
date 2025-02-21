@@ -5,7 +5,7 @@ using UnityEngine;
 public class CrouchScript : MonoBehaviour
 {
     private Vector3 crouchScale = new Vector3(1, 0.5f, 1);
-    private Vector3 playerScale = new Vector3(1, 1.3f, 1);
+    private Vector3 playerScale = new Vector3(1, 1, 1);
 
     // Start is called before the first frame update
     void Start()
