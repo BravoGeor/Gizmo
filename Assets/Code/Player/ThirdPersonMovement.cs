@@ -20,7 +20,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
-    private Animator animator;
+    public Animator animator;
 
 
    // public bool isMoving = false;
@@ -29,11 +29,13 @@ public class ThirdPersonMovement : MonoBehaviour
 
     Vector3 velocity;
     bool isGrounded;
+    private bool isJumping;
+
 
     void Start()
     {
         // Cursor.lockState = CursorLockMode.Locked;
-        animator = GetComponent<Animator>();
+       // animator = GetComponent<Animator>();
     }
 
 
@@ -43,27 +45,9 @@ public class ThirdPersonMovement : MonoBehaviour
     void Update()
     {
       
-
-        //Animation 
-        {
-            if (velocity.y == 0)
-            {
-                //Idle 
-                animator.SetFloat("Speed", 0);
-            }
-            else if  (velocity.y < 0)
-                {
-                //Walk
-                animator.SetFloat("Speed", 0.5f);
-            }
-            else if (Input.GetKey(KeyCode.LeftShift))
-            {
-                //Run
-                animator.SetFloat("Speed", 1);
-            }
-
-        }
         //Death 
+
+
         //gravity 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         if (isGrounded && velocity.y < 0)
@@ -80,9 +64,25 @@ public class ThirdPersonMovement : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
+        //Player Grounded
+        //animator.SetBool("IsGrounded", true);                                          //
+      //  isGrounded = true;                                                                        //
+     //   animator.SetBool("IsJumping", false);                                          // 
+      //  isJumping = false;                                                                          // 
+      //  animator.SetBool("IsFalling", false);                                             //
+
+
+
+
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            //animator.SetBool("isJumping, "true);                                             //
+            //isJumping = true;                                                                           //
+           // animator.SetBool("IsGrounded" false);
+          //  isGrounded = false; 
+
+      
         }
 
 
@@ -92,14 +92,37 @@ public class ThirdPersonMovement : MonoBehaviour
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             float moveSpeed = speed;
+           
+            //Sprint 
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 moveSpeed *= 2;
+                
             }
             controller.Move(direction * moveSpeed * Time.deltaTime);
         }
-    }
 
+        //Animation 
+        {
+            if (direction == Vector3.zero)
+            {
+                //Idle 
+                animator.SetFloat("Speed", 0);
+            }
+            else if (!Input.GetKey(KeyCode.LeftShift))
+            {
+                //Walk
+                animator.SetFloat("Speed", 0.5f);
+            }
+            else
+            {
+                //Run
+                animator.SetFloat("Speed", 1);
+            }
+
+        }
+    }
+    //Respawn 
     public void Respawn()
     {
         controller.enabled = false;
