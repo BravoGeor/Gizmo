@@ -14,10 +14,13 @@ public class ThirdPersonMovement : MonoBehaviour
     public float jumpHeight = 3f;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
+    private Vector3 moveDirection;
+  
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
+    private Animator animator;
 
 
    // public bool isMoving = false;
@@ -29,7 +32,8 @@ public class ThirdPersonMovement : MonoBehaviour
 
     void Start()
     {
-       // Cursor.lockState = CursorLockMode.Locked;
+        // Cursor.lockState = CursorLockMode.Locked;
+        animator = GetComponent<Animator>();
     }
 
 
@@ -38,6 +42,27 @@ public class ThirdPersonMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      
+
+        //Animation 
+        {
+            if (velocity.y == 0)
+            {
+                //Idle 
+                animator.SetFloat("Speed", 0);
+            }
+            else if  (velocity.y < 0)
+                {
+                //Walk
+                animator.SetFloat("Speed", 0.5f);
+            }
+            else if (Input.GetKey(KeyCode.LeftShift))
+            {
+                //Run
+                animator.SetFloat("Speed", 1);
+            }
+
+        }
         //Death 
         //gravity 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
