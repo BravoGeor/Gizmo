@@ -50,7 +50,8 @@ LODGroup:
   m_LODs:
   - screenRelativeHeight: 0.2825645
     fadeTransitionWidth: 0
-    renderers: []
+    renderers:
+    - renderer: {fileID: -7511558181221131132, guid: b11a05dfcd08d174c86a817461ad309d, type: 3}
   m_Enabled: 1
 --- !u!65 &-5718587725264792112
 BoxCollider:
