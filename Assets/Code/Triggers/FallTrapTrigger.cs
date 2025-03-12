@@ -10,18 +10,12 @@ public class FallTrapTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            onTriggerEnter.Invoke();
-        }
+        onTriggerEnter.Invoke();
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            onTriggerExit.Invoke();
-        }
+        onTriggerExit.Invoke();
     }
 } 
 
