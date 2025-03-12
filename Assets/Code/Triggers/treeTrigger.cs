@@ -10,12 +10,19 @@ public class treeTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        onTriggerEnter.Invoke();
+        if (other.CompareTag("Player"))
+        {
+            onTriggerEnter.Invoke();
+        }
     }
 
     void OnTriggerExit(Collider other)
     {
-        onTriggerExit.Invoke();
+        if (other.CompareTag("Player"))
+        {
+            onTriggerExit.Invoke();
+        }
     }
 }
+
 //Referanced code https://youtu.be/p1ZgS2z-LTs?si=T2lslte8rLNYyWCU
