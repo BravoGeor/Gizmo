@@ -58,6 +58,7 @@ public class TrapReset : MonoBehaviour
     // check if a trap hits the player
     void OnCollisionEnter(Collision collision)
     {
+        Debug.Log($"trap hit {collision.gameObject.name}", collision.gameObject);
         CheckTrap(collision.gameObject.GetComponent<ThirdPersonMovement>());
     }
 }

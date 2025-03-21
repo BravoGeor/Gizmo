@@ -1,28 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class TitleCollider : MonoBehaviour
 {
-    [SerializeField] UnityEvent onTriggerEnter;
-    [SerializeField] UnityEvent onTriggerExit;
+    public Animator animator;
 
-    void OnTriggerEnter(Collider other)
+    void Start()
     {
-        if (other.CompareTag("Player"))
+        // Ensure the Animator component is assigned
+        if (animator == null)
         {
-            onTriggerEnter.Invoke();
+            animator = GetComponent<Animator>();
         }
     }
 
-    void OnTriggerExit(Collider other)
+    void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Player"))
+        // Check if the collision is with the specific collider
+        if (collision.gameObject.tag == "Player")
         {
-            onTriggerExit.Invoke();
+            // Trigger the animation
+            animator.SetTrigger("BridgeTrigger");
         }
     }
-} 
-
-//Referanced code https://youtu.be/p1ZgS2z-LTs?si=T2lslte8rLNYyWCU
+}
