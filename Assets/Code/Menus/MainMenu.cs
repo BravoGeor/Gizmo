@@ -10,15 +10,15 @@ public class MainMenu : MonoBehaviour
         Cursor.visible = true;
     }
 
-    public void PlayGame ()
+    IEnumerator StartGame()
     {
-        IEnumerator Start()
-        {
-            yield return new WaitForSeconds(5);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-        Debug.Log("Start pressed");
-// SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void PlayGame()
+    {
+        StartCoroutine(StartGame());
     }
 
     public void QuitGame ()
