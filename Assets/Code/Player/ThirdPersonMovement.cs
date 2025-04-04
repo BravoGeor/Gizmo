@@ -44,12 +44,10 @@ public class ThirdPersonMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
-        //Death 
+        if (!controller.enabled) return;
 
-
-        //gravity 
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+            //gravity 
+            isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
@@ -126,6 +124,21 @@ public class ThirdPersonMovement : MonoBehaviour
     public void Respawn()
     {
         controller.enabled = false;
+        animator.SetTrigger("BearDeath");
+        StartCoroutine(RespawnPlayer());
+    }
+
+    bool AnimationIsFinished(string animationName)
+    {
+        AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
+        return info.IsName(animationName) && info.normalizedTime >= 1f;
+    }
+
+    IEnumerator RespawnPlayer()
+    {
+        yield return new WaitUntil(() => AnimationIsFinished("BearDeath"));
+
+        animator.SetTrigger("Respawn");
         controller.transform.position = CheckPoint.GetActiveCheckPointPosition();
         controller.enabled = true;
 

@@ -2728,6 +2728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f5be16734e3af418507425dea17e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sliderMusic: {fileID: 0}
   audioMixer: {fileID: 24100000, guid: 28f96943955378842842c68ffa3cc976, type: 2}
 --- !u!114 &325337660
 MonoBehaviour:
@@ -4079,7 +4080,7 @@ RectTransform:
   m_Father: {fileID: 1168907001}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4844,7 +4845,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &657192976
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4985,7 +4986,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &708579752
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6557,7 +6558,7 @@ Transform:
   m_GameObject: {fileID: 948294381}
   serializedVersion: 2
   m_LocalRotation: {x: -0.27754298, y: -0.6429835, z: 0.65036166, w: -0.29423112}
-  m_LocalPosition: {x: -330.19, y: 110.66, z: 16.69}
+  m_LocalPosition: {x: -329.89, y: 111.1, z: 17.02}
   m_LocalScale: {x: 0.45336068, y: 0.45336068, z: 0.24114405}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12734,8 +12735,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 513111637}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -13209,6 +13210,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 948294381}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1296329788
 MonoBehaviour:
@@ -13949,6 +13962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f5be16734e3af418507425dea17e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sliderMusic: {fileID: 602604866}
   audioMixer: {fileID: 24100000, guid: 28f96943955378842842c68ffa3cc976, type: 2}
 --- !u!114 &1468254980
 MonoBehaviour:
@@ -13962,6 +13976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ae285b0d3120647b65bcac66b35b73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sliderSF: {fileID: 1509301673}
   audioMixer: {fileID: 24100000, guid: 28f96943955378842842c68ffa3cc976, type: 2}
 --- !u!1 &1509301671
 GameObject:
@@ -21005,7 +21020,7 @@ RectTransform:
   m_Father: {fileID: 721411224}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -21892,8 +21907,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 795853530}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
