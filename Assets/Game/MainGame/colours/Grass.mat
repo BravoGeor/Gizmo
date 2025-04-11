@@ -56,13 +56,16 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
+    - _Interaction_distance: 2.71
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Scale: 0.2
     - _Smoothness: 1
-    - _Speed: 3
+    - _Speed: 1.44
+    - _Strength: 1.22
     m_Colors:
     - _Albedo: {r: 0.5283019, g: 0.47964656, b: 0.032395884, a: 0}
+    - _Vector3: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &6034182696552245539
 MonoBehaviour:

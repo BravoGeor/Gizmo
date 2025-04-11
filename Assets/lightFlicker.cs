@@ -5,7 +5,7 @@ using UnityEngine;
 public class lightFlicker : MonoBehaviour
 {
     public Light myLight;
-    public float maxInterval = 1f;
+    public float maxInterval = 10f;
 
     float targetIntensity;
     float lastIntensity;
@@ -30,7 +30,7 @@ public class lightFlicker : MonoBehaviour
         if (timer > interval)
         {
             lastIntensity = myLight.intensity;
-            targetIntensity = Random.Range(0.5f, 1f);
+            targetIntensity = Random.Range(7f, 10f);
             timer = 0;
             interval = Random.Range(0, maxInterval);
 
