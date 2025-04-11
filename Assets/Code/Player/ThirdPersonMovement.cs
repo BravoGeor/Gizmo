@@ -22,20 +22,33 @@ public class ThirdPersonMovement : MonoBehaviour
     public LayerMask groundMask;
     public Animator animator;
 
+    //Jumping bools 
+    private bool IsJumping;
+    private bool IsGrounded;
+    private bool IsFalling;
+
+    //Crouching Bools 
+    private bool IsCrouched;
+
 
    // public bool isMoving = false;
     public float movementSpeed = 125;
 
 
     Vector3 velocity;
-    bool isGrounded;
-    private bool isJumping;
-
+    
 
     void Start()
     {
         // Cursor.lockState = CursorLockMode.Locked;
-       // animator = GetComponent<Animator>();
+        // animator = GetComponent<Animator>();
+        //Player Grounded
+        animator.SetBool("IsGrounded", true);                                          //
+        IsGrounded = true;                                                                        //
+        animator.SetBool("IsJumping", false);                                          // 
+        IsJumping = false;                                                                          // 
+        animator.SetBool("IsFalling", false);                                             //
+        IsFalling = false;
     }
 
 
@@ -47,8 +60,8 @@ public class ThirdPersonMovement : MonoBehaviour
         if (!controller.enabled) return;
 
             //gravity 
-            isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        if (isGrounded && velocity.y < 0)
+            IsGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        if (IsGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
@@ -62,29 +75,48 @@ public class ThirdPersonMovement : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        //Player Grounded
-        //animator.SetBool("IsGrounded", true);                                          //
-      //  isGrounded = true;                                                                        //
-     //   animator.SetBool("IsJumping", false);                                          // 
-      //  isJumping = false;                                                                          // 
-      //  animator.SetBool("IsFalling", false);                                             //
 
 
 
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (IsGrounded)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            //animator.SetBool("isJumping, "true);                                             //
-            //isJumping = true;                                                                           //
-           // animator.SetBool("IsGrounded" false);
-          //  isGrounded = false; 
-
-      
+            if (!IsCrouched && Input.GetButtonDown("Jump"))
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                animator.SetBool("IsJumping", true);                                             //
+                IsJumping = true;                                                                           //
+                animator.SetBool("IsGrounded", false);
+                IsGrounded = false;
+            }
+            else if (Input.GetButtonDown("Crouch"))
+            {
+                animator.SetBool("IsCrouched", true);                                             //
+                IsCrouched = true;                                                                           //
+            }
+            else if (Input.GetButtonUp("Crouch"))
+            {
+                animator.SetBool("IsCrouched", false);
+                IsCrouched = false;
+            }
         }
 
+        if (IsJumping && velocity.y < 0)
+        {
+            animator.SetBool("IsFalling", true);
+            IsFalling = true;
+        }
 
-        if (direction.magnitude >= 0.1f)
+        if (IsFalling && IsGrounded)
+        {
+            animator.SetBool("IsGrounded", true);
+            IsJumping = false;
+            animator.SetBool("IsJumping", false);
+            IsFalling = false;
+            animator.SetBool("IsFalling", false);
+        }
+
+            if (direction.magnitude >= 0.1f)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
