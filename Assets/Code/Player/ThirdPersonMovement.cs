@@ -57,6 +57,9 @@ public class ThirdPersonMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //grass
+        Shader.SetGlobalVector("_Player", transform.position); 
+
         if (!controller.enabled) return;
 
             //gravity 
