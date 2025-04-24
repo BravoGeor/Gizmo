@@ -12,13 +12,15 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator StartGame()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void PlayGame()
     {
+        Debug.Log("start game");
         StartCoroutine(StartGame());
+
     }
 
     public void QuitGame ()
