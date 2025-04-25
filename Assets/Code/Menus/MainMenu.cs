@@ -12,8 +12,9 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator StartGame()
     {
-        yield return new WaitForSeconds(1);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        yield return new WaitForSeconds(5);
+        SceneFader.Instance.FadeToNextScene();
+
     }
 
     public void PlayGame()
