@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ToggleTreePrefabs : MonoBehaviour
+public class ToggleTerrainTrees : MonoBehaviour
 {
     public GameObject[] treeGroups; // groups or individual tree objects
 
