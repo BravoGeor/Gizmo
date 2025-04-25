@@ -2,20 +2,12 @@ using UnityEngine;
 
 public class ToggleTreePrefabs : MonoBehaviour
 {
-    public static ToggleTreePrefabs Instance { get; private set; }
-
     public GameObject[] treeGroups; // groups or individual tree objects
 
     void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject); // optional
+        bool treesState = PlayerPrefs.GetInt("TreesVisible", 1) == 1; // Default to 1 (true)
+        SetTreesVisible(treesState);
     }
 
     public void SetTreesVisible(bool visible)
@@ -25,10 +17,5 @@ public class ToggleTreePrefabs : MonoBehaviour
             if (treeGroup != null)
                 treeGroup.SetActive(visible);
         }
-    }
-
-    public bool AreTreesVisible()
-    {
-        return treeGroups.Length > 0 && treeGroups[0].activeSelf;
     }
 }
