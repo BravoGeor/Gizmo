@@ -6,19 +6,25 @@ public class TerrainToggleUI : MonoBehaviour
 {
     public Toggle treeToggle;
 
-    IEnumerator Start()
+    void Start()
     {
-        yield return new WaitUntil(() => ToggleTreePrefabs.Instance != null);
+        // Load the saved toggle state from PlayerPrefs
+        bool treesState = PlayerPrefs.GetInt("TreesVisible", 1) == 1; // Default to 1 (true)
 
-        treeToggle.isOn = ToggleTreePrefabs.Instance.AreTreesVisible();
-        treeToggle.onValueChanged.AddListener(OnToggleChanged);
+        // If the Toggle is not null
+        if (treeToggle != null)
+        {
+            treeToggle.isOn = treesState;
+
+            // Add listener for when the toggle changes
+            treeToggle.onValueChanged.AddListener(OnToggleChanged);
+        }
     }
 
+    // This method is called when the toggle value changes
     void OnToggleChanged(bool showTrees)
     {
-        if (ToggleTreePrefabs.Instance != null)
-        {
-            ToggleTreePrefabs.Instance.SetTreesVisible(showTrees);
-        }
+        // Save the toggle state to PlayerPrefs (1 = true, 0 = false)
+        PlayerPrefs.SetInt("TreesVisible", showTrees ? 1 : 0);
     }
 }
