@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ToggleTerrainTrees : MonoBehaviour
 {
-    public GameObject[] treeGroups; // groups or individual tree objects
+    public Terrain[] treeGroups; // groups or individual tree objects
 
     void Awake()
     {
@@ -12,10 +12,10 @@ public class ToggleTerrainTrees : MonoBehaviour
 
     public void SetTreesVisible(bool visible)
     {
-        foreach (GameObject treeGroup in treeGroups)
+        foreach (Terrain treeGroup in treeGroups)
         {
             if (treeGroup != null)
-                treeGroup.SetActive(visible);
+                treeGroup.drawTreesAndFoliage = visible;
         }
     }
 }
