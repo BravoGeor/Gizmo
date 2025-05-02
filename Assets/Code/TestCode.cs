@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AudioEventFromGameObjects : MonoBehaviour
+public class TreeAudioManager : MonoBehaviour
 {
     [Header("Audio Source GameObjects")]
     public GameObject triggerAudioObject;   // 1: Trigger zone sound
