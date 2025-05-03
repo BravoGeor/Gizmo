@@ -1,18 +1,21 @@
 using UnityEngine;
 
-public class TreeAudioManager : MonoBehaviour
+public class LogAudio : MonoBehaviour
 {
-    [Header("Audio Source GameObjects")]
-    public GameObject triggerAudioObject;   // 1: Trigger zone sound
-    public GameObject groundAudioObject;    // 2: Hits ground
-    public GameObject loopAudioObject;      // 3: Loops until collision
-    public GameObject hitPlayerAudioObject; // 4: Hits player
-    public GameObject hitTargetAudioObject; // 5: Hits specific object
+    [Header("Log Audios")]
+    public GameObject groundAudioObject;
+    public GameObject loopAudioObject;
+    public GameObject hitPlayerAudioObject;
+    public GameObject hitTreeAudioObject;
 
-    [Header("Target References")]
-    public GameObject triggerZone;          // The trigger collider object
-    public GameObject targetObject;         // The specific object for condition B
+    [Header("Zones")]
+    public GameObject triggerZone;
+    public GameObject targetObject;
 
+    [Header("Ground Layer")]
+    public string groundLayerName = "Ground";
+
+    private int groundLayer;
     private AudioSource loopSource;
     private bool isLooping = false;
     private bool loopEnded = false;
@@ -21,11 +24,13 @@ public class TreeAudioManager : MonoBehaviour
     {
         loopSource = loopAudioObject.GetComponent<AudioSource>();
         loopSource.loop = true;
+
+        // Convert layer name to layer index
+        groundLayer = LayerMask.NameToLayer(groundLayerName);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        // Player enters specified trigger
         if (other.CompareTag("Player") && other.gameObject == triggerZone)
         {
             triggerAudioObject.GetComponent<AudioSource>().Play();
@@ -40,7 +45,10 @@ public class TreeAudioManager : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        GameObject collided = collision.gameObject;
+
+        // Check against ground layer
+        if (collided.layer == groundLayer)
         {
             groundAudioObject.GetComponent<AudioSource>().Play();
         }
@@ -50,13 +58,13 @@ public class TreeAudioManager : MonoBehaviour
             loopSource.Stop();
             loopEnded = true;
 
-            if (collision.gameObject.CompareTag("Player"))
+            if (collided.CompareTag("Player"))
             {
                 hitPlayerAudioObject.GetComponent<AudioSource>().Play();
             }
-            else if (collision.gameObject == targetObject)
+            else if (collided == targetObject)
             {
-                hitTargetAudioObject.GetComponent<AudioSource>().Play();
+                hitTreeAudioObject.GetComponent<AudioSource>().Play();
             }
         }
     }
