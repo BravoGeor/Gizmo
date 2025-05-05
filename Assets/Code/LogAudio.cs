@@ -33,7 +33,7 @@ public class LogAudio : MonoBehaviour
     {
         if (other.CompareTag("Player") && other.gameObject == triggerZone)
         {
-            triggerAudioObject.GetComponent<AudioSource>().Play();
+            //triggerAudioObject.GetComponent<AudioSource>().Play();
 
             if (!isLooping)
             {
