@@ -66,7 +66,7 @@ public class SceneFader : MonoBehaviour
     private IEnumerator FadeOutIn(int sceneIndex)
     {
         // Debug log to show when fade-out starts
-        Debug.Log("🌓 Fade Out started...");
+        Debug.Log(" Fade Out started...");
 
         // Fade out to black
         float time = 0f;
