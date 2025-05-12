@@ -33,6 +33,7 @@ public class SFSlider: MonoBehaviour
         float loadedNumber = PlayerPrefs.GetFloat("sfx", 0f);
         Debug.Log($"loaded {loadedNumber}");
         sliderSF.value = loadedNumber;
+        SetVolume(loadedNumber);
     }
 
 }

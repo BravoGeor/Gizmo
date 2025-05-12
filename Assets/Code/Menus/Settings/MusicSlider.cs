@@ -35,6 +35,7 @@ public class MusicSlider : MonoBehaviour
         float loadedNumber = PlayerPrefs.GetFloat("Volume" ,0f);
         Debug.Log($"loaded {loadedNumber}");
         sliderMusic.value = loadedNumber;
+        SetVolume( loadedNumber );  
     }
 }
 

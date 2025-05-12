@@ -1485,7 +1485,7 @@ RectTransform:
   m_Father: {fileID: 1988609988}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2721,7 +2721,6 @@ GameObject:
   - component: {fileID: 325337662}
   - component: {fileID: 325337661}
   - component: {fileID: 325337660}
-  - component: {fileID: 325337659}
   m_Layer: 5
   m_Name: Canvas (1)
   m_TagString: Untagged
@@ -2750,20 +2749,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1267.9026, y: 437.27863}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &325337659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 325337657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01f5be16734e3af418507425dea17e5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sliderMusic: {fileID: 0}
-  audioMixer: {fileID: 24100000, guid: 28f96943955378842842c68ffa3cc976, type: 2}
 --- !u!114 &325337660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4927,7 +4912,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &657192976
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8049,7 +8034,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1156412475
 Transform:
   m_ObjectHideFlags: 0
@@ -8350,7 +8335,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1468254980}
         m_TargetAssemblyTypeName: SFSlider, Assembly-CSharp
         m_MethodName: SetVolume
         m_Mode: 0
@@ -13261,7 +13246,7 @@ RectTransform:
   m_Father: {fileID: 1206169720}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -13492,8 +13477,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1498032330}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -14655,7 +14640,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1468254975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14757,7 +14742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f5be16734e3af418507425dea17e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliderMusic: {fileID: 0}
+  sliderMusic: {fileID: 2063016500}
   audioMixer: {fileID: 24100000, guid: 28f96943955378842842c68ffa3cc976, type: 2}
 --- !u!114 &1468254980
 MonoBehaviour:
@@ -14771,7 +14756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ae285b0d3120647b65bcac66b35b73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliderSF: {fileID: 0}
+  sliderSF: {fileID: 1198761903}
   audioMixer: {fileID: 24100000, guid: 28f96943955378842842c68ffa3cc976, type: 2}
 --- !u!114 &1468254981
 MonoBehaviour:
@@ -14785,7 +14770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2002c505cae384442afdeb78bf9165aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treeToggle: {fileID: 0}
+  treeToggle: {fileID: 1022202267}
 --- !u!1 &1498032329
 GameObject:
   m_ObjectHideFlags: 0
@@ -15796,8 +15781,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 199812713}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -23170,7 +23155,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1468254979}
         m_TargetAssemblyTypeName: MusicSlider, Assembly-CSharp
         m_MethodName: SetVolume
         m_Mode: 0
