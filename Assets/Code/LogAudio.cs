@@ -29,43 +29,42 @@ public class LogAudio : MonoBehaviour
         groundLayer = LayerMask.NameToLayer(groundLayerName);
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Player") && other.gameObject == triggerZone)
-        {
-            //triggerAudioObject.GetComponent<AudioSource>().Play();
+        GameObject collided = collision.gameObject;
 
+        if (collided.CompareTag("Player"))
+        {
+            hitPlayerAudioObject.GetComponent<AudioSource>().Play();
+        }
+        else if (collided == targetObject)
+        {
+            Debug.Log($"Hit target: is looping {isLooping} loop ended {loopEnded}");
+            hitTreeAudioObject.GetComponent<AudioSource>().Play();
+            if (isLooping && !loopEnded)
+            {
+                Debug.Log("Stop loop");
+                loopSource.Stop();
+                loopEnded = true;
+            }
+        }
+        // Check against ground layer
+        else if (collided.layer == groundLayer)
+        {
+            groundAudioObject.GetComponent<AudioSource>().Play();
             if (!isLooping)
             {
+                Debug.Log("Looping sound");
                 loopSource.Play();
                 isLooping = true;
             }
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionExit(Collision collision)
     {
-        GameObject collided = collision.gameObject;
-
-        // Check against ground layer
-        if (collided.layer == groundLayer)
-        {
-            groundAudioObject.GetComponent<AudioSource>().Play();
-        }
-
-        if (isLooping && !loopEnded)
-        {
-            loopSource.Stop();
-            loopEnded = true;
-
-            if (collided.CompareTag("Player"))
-            {
-                hitPlayerAudioObject.GetComponent<AudioSource>().Play();
-            }
-            else if (collided == targetObject)
-            {
-                hitTreeAudioObject.GetComponent<AudioSource>().Play();
-            }
-        }
+        loopSource.Stop();
+        loopEnded = true;
+        isLooping = false;
     }
 }
