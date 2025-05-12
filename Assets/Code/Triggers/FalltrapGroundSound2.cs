@@ -8,8 +8,6 @@ public class FalltrapGroundSoundTrigger : MonoBehaviour
     [SerializeField] UnityEvent onTriggerEnter;
     [SerializeField] UnityEvent onTriggerExit;
 
-    void OnTriggerEnter(Collider other)
-    {
         void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
@@ -25,8 +23,6 @@ public class FalltrapGroundSoundTrigger : MonoBehaviour
                 onTriggerExit.Invoke();
             }
         }
-
-    }
 }
 
 //Referanced code https://youtu.be/p1ZgS2z-LTs?si=T2lslte8rLNYyWCU
