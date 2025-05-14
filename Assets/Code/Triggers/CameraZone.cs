@@ -31,7 +31,7 @@ public class CameraZone : MonoBehaviour
             }
             else if (playerInside && freeLookCamera != null)
             {
-                // Optional: Add a check for priority mismatches
+               
                 if (freeLookCamera.Priority != activePriority)
                 {
                     Debug.LogWarning("Priority mismatch in zone: " + name);

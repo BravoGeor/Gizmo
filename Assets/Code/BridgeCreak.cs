@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BridgeCreak : MonoBehaviour
 {
-    public AudioSource creakAudio;          // Assign in Inspector
+    public AudioSource creakAudio;          
     public float movementThreshold = 0.1f;  // Speed to count as "walking"
     public float minPitch = 0.95f;
     public float maxPitch = 1.05f;

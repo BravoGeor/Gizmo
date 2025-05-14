@@ -46,7 +46,7 @@ public class CheckPoint : MonoBehaviour
         }
     }
 
-    // Get position of the last activated checkpoint
+    // Get position of the last activated checkpoint. Doesnt work
     public static Vector3 GetActiveCheckPointPosition()
     {
         // If player die without activate any checkpoint, we will return a default position
