@@ -70,6 +70,7 @@ public class SceneFader : MonoBehaviour
 
         // Fade out to black
         float time = 0f;
+        fadeImage = GameObject.Find("FadeImage").GetComponent<Image>();
         Color c = fadeImage.color;
         fadeImage.raycastTarget = true; // Block input during fade-out
 
